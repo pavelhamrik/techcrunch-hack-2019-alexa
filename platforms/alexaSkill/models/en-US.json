@@ -1,7 +1,7 @@
 {
 	"interactionModel": {
 		"languageModel": {
-			"invocationName": "career",
+			"invocationName": "inner voice",
 			"types": [],
 			"intents": [
 				{
@@ -25,6 +25,14 @@
 							"name": "name",
 							"type": "AMAZON.US_FIRST_NAME"
 						}
+					]
+				},
+				{
+					"name": "DangerousIntent",
+					"samples": [
+						"work is in danger",
+						"danger danger",
+						"danger high voltage"
 					]
 				},
 				{
