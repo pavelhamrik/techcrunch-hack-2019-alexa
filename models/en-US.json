@@ -2,40 +2,61 @@
 	"invocation": "inner voice",
 	"intents": [
 		{
-			"name": "HelloWorldIntent",
+			"name": "ShowMeTheCheeseIntent",
 			"phrases": [
-				"hello",
-				"say hello",
-				"say hello world"
+				"cheese",
+				"say cheese",
+				"give me the cheeses"
 			]
 		},
 		{
-			"name": "DangerousIntent",
+			"name": "MyInterestsAreIntent",
 			"phrases": [
-				"work is in danger",
-				"danger danger",
-				"danger high voltage"
-			]
-		},
-		{
-			"name": "MyNameIsIntent",
-			"phrases": [
-				"{name}",
-				"my name is {name}",
-				"i am {name}",
-				"you can call me {name}"
+				"I like {interestone} and {interesttwo}",
+				"I enjoy {interestone} and {interesttwo}",
+				"{interestone} and {interesttwo} i guess",
+				"{interestone} and {interesttwo}"
 			],
 			"inputs": [
 				{
-					"name": "name",
-					"type": {
-						"alexa": "AMAZON.US_FIRST_NAME",
-						"dialogflow": "@sys.given-name"
-					}
+					"name": "interestone",
+					"type": "INTEREST_TYPE"
+				},
+				{
+					"name": "interesttwo",
+					"type": "INTEREST_TYPE"
 				}
 			]
 		}
 	],
+	"inputTypes": [
+		{
+			"name": "INTEREST_TYPE",
+			"values": [
+				{
+					"id": "ANNUAL_WAGE",
+					"value": "annual wage",
+					"synonyms": [
+						"wage",
+						"salary",
+						"compensation"
+					]
+				},
+				{
+					"id": "PROJECTED_GROWTH",
+					"value": "projected growth"
+				},
+				{
+					"id": "AUTOMATION_RISK",
+					"value": "automation risk",
+					"synonyms": [
+						"risk of automation",
+						"won't be killed by robots"
+					]  
+				}
+			]
+		}
+	  ],
 	"alexa": {
 		"interactionModel": {
 			"languageModel": {
