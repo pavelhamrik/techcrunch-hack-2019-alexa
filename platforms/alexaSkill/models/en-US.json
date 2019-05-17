@@ -13,6 +13,14 @@
 					]
 				},
 				{
+					"name": "DangerousIntent",
+					"samples": [
+						"work is in danger",
+						"danger danger",
+						"danger high voltage"
+					]
+				},
+				{
 					"name": "MyNameIsIntent",
 					"samples": [
 						"{name}",
@@ -28,14 +36,6 @@
 					]
 				},
 				{
-					"name": "DangerousIntent",
-					"samples": [
-						"work is in danger",
-						"danger danger",
-						"danger high voltage"
-					]
-				},
-				{
 					"name": "AMAZON.CancelIntent",
 					"samples": []
 				},
@@ -45,6 +45,10 @@
 				},
 				{
 					"name": "AMAZON.StopIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.NavigateHomeIntent",
 					"samples": []
 				}
 			]

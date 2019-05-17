@@ -26,15 +26,30 @@ app.use(
 
 app.setHandler({
     LAUNCH() {
-        return this.toIntent('HelloWorldIntent');
+        this.$alexaSkill
+            .addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument',
+                version: '1.0',
+                document: require('../apl/main.json'),
+                datasources: {},
+                // document: require('../apl/document.json'),
+                // datasources: require('../apl/data-sources.json'),
+            });
+        this.ask('So…', 'What\'s up?');
     },
 
     HelloWorldIntent() {
-        this.ask('What\'s your name?', 'Please tell me your name.');
-    },
-    
-    AnotherIntent() {
-        this.tell('Grilling the bratwursts here,' + this.$inputs.name.value + '.');
+        this.$alexaSkill
+            .addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument',
+                version: '1.0',
+                // document: require('../apl/main.json'),
+                // datasources: {},
+                document: require('../apl/document.json'),
+                datasources: require('../apl/data-sources.json'),
+            });
+        this.ask('Stop pestering me.', 'OK, I didn\'t mean that');
+        // this.ask('Hi', 'Hi indeed?');
     },
 
     DangerousIntent() {
@@ -43,8 +58,7 @@ app.setHandler({
                 'Don\'t you wanna know how we keep startin\ fires? It\'s my desire. It\'s my desire', 
                 'https://s3.eu-west-3.amazonaws.com/assets-di38/high-voltage-small.png'
             )
-            .ask('Yes, danger, danger, high voltage!')
-            .toIntent('AnotherIntent');
+            .ask('Yes, danger, danger, high voltage!');
     },
 
     MyNameIsIntent() {
@@ -75,5 +89,9 @@ app.setHandler({
         this.tell('Ta ta!');
     }
 });
+
+function prepData(sorting) {
+    return {}
+}
 
 module.exports.app = app;

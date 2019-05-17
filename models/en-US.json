@@ -1,5 +1,5 @@
 {
-	"invocation": "career",
+	"invocation": "inner voice",
 	"intents": [
 		{
 			"name": "HelloWorldIntent",
@@ -7,6 +7,14 @@
 				"hello",
 				"say hello",
 				"say hello world"
+			]
+		},
+		{
+			"name": "DangerousIntent",
+			"phrases": [
+				"work is in danger",
+				"danger danger",
+				"danger high voltage"
 			]
 		},
 		{
@@ -42,6 +50,10 @@
 					},
 					{
 						"name": "AMAZON.StopIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.NavigateHomeIntent",
 						"samples": []
 					}
 				]
