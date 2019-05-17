@@ -11,6 +11,8 @@ var Sort = (function() {
 
         var headers = [];
 
+        var ordinalNumber = 0;
+
         fs.createReadStream(filename)
             .pipe(csv())
             .on('data', function(item) {
@@ -21,6 +23,8 @@ var Sort = (function() {
                     for (var i=0; i<headers.length; i++) {
                         row[headers[i]] = item[i];
                     }
+                    ordinalNumber += 1;
+                    row['ordinalNumber'] = ordinalNumber;
                     __data.push(row);
                 }
             })
@@ -105,8 +109,8 @@ async function run() {
 
     //var criteria = ['ALUMNIS %', 'AUTOMATION RISK', 'GROWTH BY 2024'];
     //var criteria = ['GROWTH BY 2024'];
-    //var criteria = ['ALUMNIS %'];
-    var criteria = ['MEDIAN WAGE'];
+    var criteria = ['ALUMNIS %'];
+    //var criteria = ['MEDIAN WAGE'];
     sorted_data = Sort.sort_by(criteria);
 
     console.log("Sorted data [0] :");
