@@ -1,6 +1,7 @@
 'use strict';
 
 const sort_by = require('./sort');
+const format_for_display = require('./format');
 
 // ------------------------------------------------------------------
 // APP INITIALIZATION
@@ -49,7 +50,26 @@ app.setHandler({
     async MyInterestsAreIntent() {
         const careersByInterest = await sort_by([this.$inputs.interestone.id]);
         this.$user.$data.careersByInterest = careersByInterest;
-        // console.log(careersByInterest);
+
+        console.log('GGG–––––––––––––––––––––––––––––––––––', JSON.stringify(format_for_display(
+            [this.$inputs.interestone.id], 
+            careersByInterest,
+            3
+        )), '–––––––––––––––––––––––––––––––––––');
+
+        if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
+            this.$alexaSkill.addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument',
+                version: '1.0',
+                document: require('../apl/inner_voice_list.json'),
+                datasources: JSON.stringify(format_for_display(
+                    [this.$inputs.interestone.id], 
+                    careersByInterest,
+                    3
+                )),
+                // datasources: require('../apl/data-sources.json')
+            });
+        }
 
         this.ask(`Popular EDHEC graduates' careers sorted by annual wage are:
             ${careersByInterest[0].FUNCTION}, 
@@ -61,8 +81,6 @@ app.setHandler({
 
     CareerDetailIntent() {
         const careersByInterest = this.$user.$data.careersByInterest;
-        // console.log(careersByInterest);
-        // const role = careersByInterest[0]
 
         const reqRole = this.$inputs.roleDetail.value.toUpperCase();
 
@@ -70,17 +88,17 @@ app.setHandler({
             return reqRole == roleRow.FUNCTION;
         });
 
-        console.log('ROLE', role);
-        console.log('REQ_ROLE', reqRole);
+        // console.log('ROLE', role);
+        // console.log('REQ_ROLE', reqRole);
 
         if (typeof role === 'undefined') {
             return this.toIntent('Unhandled');    
         }
 
         this.ask(`
-                According to the Oxford University, ${role.FUNCTION} has ${role.AUTOMATION_RISK} probability of automation. 
-                It's not enough to just go through at the data. I have a couple of alumni from EDHEC, do you want to take a look?
-            `);
+            According to the Oxford University, ${role.FUNCTION} has ${role.AUTOMATION_RISK} probability of automation. 
+            It's not enough to just go through at the data. I have a couple of alumni from EDHEC, do you want to take a look?
+        `);
     },
 
     LinkedInListIntent() {
