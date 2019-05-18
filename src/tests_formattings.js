@@ -13,7 +13,10 @@ async function run_tests() {
     //console.log("Sorted data [0] :");
     //console.log(sorted_data[0]);
 
-    formatted = format_for_display(criteria, sorted_data, 5);
+    formatted = format_for_display('jobs', sorted_data, criteria, 5);
+    //console.log(JSON.stringify(formatted));
+
+    formatted = format_for_display('alumni', sorted_data[0], '', 3);
     console.log(formatted);
 }
 
