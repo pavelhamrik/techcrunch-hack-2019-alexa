@@ -12,10 +12,10 @@
 		{
 			"name": "MyInterestsAreIntent",
 			"phrases": [
-				"I like {interestone} and {interesttwo}",
-				"I enjoy {interestone} and {interesttwo}",
-				"{interestone} and {interesttwo} i guess",
-				"{interestone} and {interesttwo}"
+				"{interestone} matters to me",
+				"{interestone} matters the most",
+				"It's totally {interestone}",
+				"{interestone} i guess"
 			],
 			"inputs": [
 				{

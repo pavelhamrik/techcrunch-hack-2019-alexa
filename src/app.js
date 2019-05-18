@@ -33,7 +33,11 @@ app.setHandler({
                 document: require('../apl/splash.json'),
                 datasources: {},
             });
-        this.ask('So…', 'What\'s up?');
+        this.ask(`Hello EDHEC Student, 
+            I am a voice coach, the essence of my existence is to present you career options!
+            For a start, tell me which two of these matter to you the most?
+            Annual wage or popularity among EDHEC students?
+        `);
     },
 
     ShowMeTheCheeseIntent() {
@@ -48,7 +52,7 @@ app.setHandler({
     },
 
     MyInterestsAreIntent() {
-        this.ask('What I\'ve gotten is' + this.$inputs.interestone.value + ' and '  + this.$inputs.interesttwo.value + '.');
+        this.ask('What I\'ve gotten is <prosody pitch="x-low">' + this.$inputs.interestone.value + '</prosody> and '  + this.$inputs.interesttwo.value + '.');
     },
 
     Unhandled() {
