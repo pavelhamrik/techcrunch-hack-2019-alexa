@@ -37,12 +37,12 @@ app.setHandler({
             });
         }
 
-        this.ask(`Hello EDHEC Student`);
-        // this.ask(`Hello EDHEC Student, 
-        //     I am a voice coach, the essence of my existence is to present you career options!
-        //     For a start, tell me which two of these matter to you the most?
-        //     Annual wage or popularity among EDHEC students?
-        // `);
+        // this.ask(`Hello EDHEC Student`);
+        this.ask(`Hello EDHEC Student, 
+            I am a voice coach, the essence of my existence is to present you career options!
+            For a start, tell me which two of these matter to you the most?
+            Annual wage or popularity among EDHEC students?
+        `);
     },
 
     async MyInterestsAreIntent() {
@@ -66,7 +66,6 @@ app.setHandler({
                     [this.$inputs.interestone.id], 
                     3
                 ),
-                // datasources: require('../apl/data-sources.json')
             });
         }
 
@@ -94,28 +93,28 @@ app.setHandler({
             return this.toIntent('Unhandled');    
         }
 
-        const test = format_for_display(
-            'alumni',
-            role,
-            '', 
-            3
-        )
+        // const test = format_for_display(
+        //     'alumni',
+        //     careersByInterest[0],
+        //     '', 
+        //     3
+        // )
 
-        console.log('GGG', test);
+        // console.log('GGG', test);
 
-        if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
-            this.$alexaSkill.addDirective({
-                type: 'Alexa.Presentation.APL.RenderDocument',
-                version: '1.0',
-                document: require('../apl/job-template.json'),
-                datasources: format_for_display(
-                    'alumni',
-                    careersByInterest,
-                    '', 
-                    3
-                ),
-            });
-        }
+        // if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
+        //     this.$alexaSkill.addDirective({
+        //         type: 'Alexa.Presentation.APL.RenderDocument',
+        //         version: '1.0',
+        //         document: require('../apl/job-template.json'),
+        //         datasources: format_for_display(
+        //             'alumni',
+        //             careersByInterest,
+        //             '', 
+        //             3
+        //         ),
+        //     });
+        // }
 
         this.ask(`
             According to the Oxford University, ${role.FUNCTION} has ${role.AUTOMATION_RISK} probability of automation. 
@@ -124,14 +123,14 @@ app.setHandler({
     },
 
     LinkedInListIntent() {
-        if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
-            this.$alexaSkill.addDirective({
-                type: 'Alexa.Presentation.APL.RenderDocument',
-                version: '1.0',
-                document: require('../apl/inner_voice_list.json'),
-                datasources: require('../apl/data-sources.json'),
-            });
-        }
+        // if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
+        //     this.$alexaSkill.addDirective({
+        //         type: 'Alexa.Presentation.APL.RenderDocument',
+        //         version: '1.0',
+        //         document: require('../apl/inner_voice_list.json'),
+        //         datasources: require('../apl/data-sources.json'),
+        //     });
+        // }
         this.tell(`
             According to LinkedIn, these alumni have listed Lawyer as their occupation.
             I’ve sent you their details. Alumni are very forthcoming – do reach out!
