@@ -3,7 +3,7 @@ var Sort = (function() {
     'use strict';
 
     var __data = [];
-    const __sortable_columns = ['ALUMNIS %', 'AUTOMATION RISK', 'GROWTH BY 2024', 'MEDIAN WAGE', 'PEOPLE EMPLOYED', 'FUN', 'TEAM WORK'];
+    const __sortable_columns = ['ALUMNIS_PERCENTAGE', 'AUTOMATION_RISK', 'GROWTH_BY_2024', 'MEDIAN_WAGE', 'PEOPLE_EMPLOYED', 'FUN', 'TEAM_WORK'];
 
     function __load_data(filename) {
         var fs = require('fs');
@@ -41,7 +41,7 @@ var Sort = (function() {
         var stats = {};
         data.forEach(function(row) {
             __sortable_columns.forEach(function(column) {
-                //console.log(column);
+                // console.log(column);
                 var value = row[column];
                 value = __get_number(value);
                 if (!(column in stats)) {
@@ -97,24 +97,21 @@ var Sort = (function() {
     };
 }());
 
-
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function run() {
+async function run(criteria = 'TEAM_WORK') {
     Sort.init();
     await sleep(1000);
 
-    //var criteria = ['ALUMNIS %', 'AUTOMATION RISK', 'GROWTH BY 2024'];
-    //var criteria = ['GROWTH BY 2024'];
-    var criteria = ['ALUMNIS %'];
-    //var criteria = ['MEDIAN WAGE'];
     sorted_data = Sort.sort_by(criteria);
 
-    console.log("Sorted data [0] :");
-    console.log(sorted_data[0]);
+    console.log("Sorted data [0] :", sorted_data[0]);
+    
+    return sorted_data;
 }
 
-run();
+module.exports = run;
+
+// run();

@@ -1,5 +1,7 @@
 'use strict';
 
+const run = require('./sort');
+
 // ------------------------------------------------------------------
 // APP INITIALIZATION
 // ------------------------------------------------------------------
@@ -26,33 +28,47 @@ app.use(
 
 app.setHandler({
     LAUNCH() {
-        this.$alexaSkill
-            .addDirective({
-                type: 'Alexa.Presentation.APL.RenderDocument',
-                version: '1.0',
-                document: require('../apl/splash.json'),
-                datasources: {},
-            });
-        this.ask(`Hello EDHEC Student, 
-            I am a voice coach, the essence of my existence is to present you career options!
-            For a start, tell me which two of these matter to you the most?
-            Annual wage or popularity among EDHEC students?
-        `);
+        if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
+            this.$alexaSkill
+                .addDirective({
+                    type: 'Alexa.Presentation.APL.RenderDocument',
+                    version: '1.0',
+                    document: require('../apl/splash.json'),
+                    datasources: {},
+                });
+        }
+
+        this.ask(`Hello EDHEC Student`);
+
+        // this.ask(`Hello EDHEC Student, 
+        //     I am a voice coach, the essence of my existence is to present you career options!
+        //     For a start, tell me which two of these matter to you the most?
+        //     Annual wage or popularity among EDHEC students?
+        // `);
     },
 
     ShowMeTheCheeseIntent() {
-        this.$alexaSkill
-            .addDirective({
-                type: 'Alexa.Presentation.APL.RenderDocument',
-                version: '1.0',
-                document: require('../apl/document.json'),
-                datasources: require('../apl/data-sources.json'),
-            });
+        if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
+            this.$alexaSkill
+                .addDirective({
+                    type: 'Alexa.Presentation.APL.RenderDocument',
+                    version: '1.0',
+                    document: require('../apl/document.json'),
+                    datasources: require('../apl/data-sources.json'),
+                });
+        }
         this.ask('Stop pestering me.', 'OK, I didn\'t mean that');
     },
 
     MyInterestsAreIntent() {
-        this.ask('What I\'ve gotten is <prosody pitch="x-low">' + this.$inputs.interestone.value + '</prosody> and '  + this.$inputs.interesttwo.value + '.');
+        // console.log('XXXX', this.$inputs.interestone.id);
+        const sortedByInterest = run(this.$inputs.interestone.id);
+        console.log(sortedByInterest);
+        this.ask('Popular EDHEC graduates’ careers sorted by annual wage are:'
+            + sortedByInterest[0][1] + ', '
+            + sortedByInterest[1][1] + ' and '
+            + sortedByInterest[2][1] + '. '
+        );
     },
 
     Unhandled() {

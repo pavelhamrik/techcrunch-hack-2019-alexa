@@ -34,7 +34,32 @@
 			"name": "INTEREST_TYPE",
 			"values": [
 				{
-					"id": "ANNUAL_WAGE",
+					"id": "ALUMNIS_PERCENTAGE",
+					"value": "popularity among EDHEC students",
+					"synonyms": [
+						"popularity",
+						"staying in the field"
+					]  
+				},
+				{
+					"id": "AUTOMATION_RISK",
+					"value": "automation risk",
+					"synonyms": [
+						"risk of automation",
+						"won't be killed by robots"
+					]  
+				},
+				{
+					"id": "GROWTH_BY_2024",
+					"value": "projected growth",
+					"synonyms": [
+						"expected growth",
+						"growth of the industry",
+						"growthy by 2024"
+					]
+				},
+				{
+					"id": "MEDIAN_WAGE",
 					"value": "annual wage",
 					"synonyms": [
 						"wage",
@@ -43,15 +68,28 @@
 					]
 				},
 				{
-					"id": "PROJECTED_GROWTH",
-					"value": "projected growth"
+					"id": "PEOPLE_EMPLOYED",
+					"value": "people employed",
+					"synonyms": [
+						"employment rate",
+						"rate of employment"
+					]  
 				},
 				{
-					"id": "AUTOMATION_RISK",
-					"value": "automation risk",
+					"id": "FUN",
+					"value": "fun",
 					"synonyms": [
-						"risk of automation",
-						"won't be killed by robots"
+						"having fun",
+						"enjoyment"
+					]  
+				},
+				{
+					"id": "TEAM_WORK",
+					"value": "team work",
+					"synonyms": [
+						"being a part of a team",
+						"being part of team",
+						"team"
 					]  
 				}
 			]

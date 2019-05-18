@@ -7,7 +7,38 @@
 					"name": "INTEREST_TYPE",
 					"values": [
 						{
-							"id": "ANNUAL_WAGE",
+							"id": "ALUMNIS_PERCENTAGE",
+							"name": {
+								"value": "popularity among EDHEC students",
+								"synonyms": [
+									"popularity",
+									"staying in the field"
+								]
+							}
+						},
+						{
+							"id": "AUTOMATION_RISK",
+							"name": {
+								"value": "automation risk",
+								"synonyms": [
+									"risk of automation",
+									"won't be killed by robots"
+								]
+							}
+						},
+						{
+							"id": "GROWTH_BY_2024",
+							"name": {
+								"value": "projected growth",
+								"synonyms": [
+									"expected growth",
+									"growth of the industry",
+									"growthy by 2024"
+								]
+							}
+						},
+						{
+							"id": "MEDIAN_WAGE",
 							"name": {
 								"value": "annual wage",
 								"synonyms": [
@@ -18,18 +49,33 @@
 							}
 						},
 						{
-							"id": "PROJECTED_GROWTH",
+							"id": "PEOPLE_EMPLOYED",
 							"name": {
-								"value": "Projected growth"
+								"value": "people employed",
+								"synonyms": [
+									"employment rate",
+									"rate of employment"
+								]
 							}
 						},
 						{
-							"id": "AUTOMATION_RISK",
+							"id": "FUN",
 							"name": {
-								"value": "automation risk",
+								"value": "fun",
 								"synonyms": [
-									"risk of automation",
-									"won't be killed by robots"
+									"having fun",
+									"enjoyment"
+								]
+							}
+						},
+						{
+							"id": "TEAM_WORK",
+							"name": {
+								"value": "team work",
+								"synonyms": [
+									"being a part of a team",
+									"being part of team",
+									"team"
 								]
 							}
 						}
@@ -48,10 +94,10 @@
 				{
 					"name": "MyInterestsAreIntent",
 					"samples": [
-						"I like {interestone} and {interesttwo}",
-						"I enjoy {interestone} and {interesttwo}",
-						"{interestone} and {interesttwo} i guess",
-						"{interestone} and {interesttwo}"
+						"{interestone} matters to me",
+						"{interestone} matters the most",
+						"It's totally {interestone}",
+						"{interestone} i guess"
 					],
 					"slots": [
 						{
