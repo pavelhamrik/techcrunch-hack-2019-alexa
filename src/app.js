@@ -1,6 +1,6 @@
 'use strict';
 
-const run = require('./sort');
+const sort_by = require('./sort');
 
 // ------------------------------------------------------------------
 // APP INITIALIZATION
@@ -47,7 +47,7 @@ app.setHandler({
     },
 
     async MyInterestsAreIntent() {
-        const careersByInterest = await run([this.$inputs.interestone.id]);
+        const careersByInterest = await sort_by([this.$inputs.interestone.id]);
         this.$user.$data.careersByInterest = careersByInterest;
         // console.log(careersByInterest);
 
