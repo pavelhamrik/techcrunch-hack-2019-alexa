@@ -29,17 +29,15 @@ app.use(
 app.setHandler({
     LAUNCH() {
         if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
-            this.$alexaSkill
-                .addDirective({
-                    type: 'Alexa.Presentation.APL.RenderDocument',
-                    version: '1.0',
-                    document: require('../apl/intro.json'),
-                    datasources: {},
-                });
+            this.$alexaSkill.addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument',
+                version: '1.0',
+                document: require('../apl/intro.json'),
+                datasources: {},
+            });
         }
 
         this.ask(`Hello EDHEC Student`);
-
         // this.ask(`Hello EDHEC Student, 
         //     I am a voice coach, the essence of my existence is to present you career options!
         //     For a start, tell me which two of these matter to you the most?
@@ -63,8 +61,9 @@ app.setHandler({
                 version: '1.0',
                 document: require('../apl/inner_voice_list.json'),
                 datasources: format_for_display(
-                    [this.$inputs.interestone.id], 
+                    'jobs',
                     careersByInterest,
+                    [this.$inputs.interestone.id], 
                     3
                 ),
                 // datasources: require('../apl/data-sources.json')
@@ -95,14 +94,27 @@ app.setHandler({
             return this.toIntent('Unhandled');    
         }
 
+        const test = format_for_display(
+            'alumni',
+            role,
+            '', 
+            3
+        )
+
+        console.log('GGG', test);
+
         if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
-            this.$alexaSkill
-                .addDirective({
-                    type: 'Alexa.Presentation.APL.RenderDocument',
-                    version: '1.0',
-                    document: require('../apl/job-template.json'),
-                    datasources: {},
-                });
+            this.$alexaSkill.addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument',
+                version: '1.0',
+                document: require('../apl/job-template.json'),
+                datasources: format_for_display(
+                    'alumni',
+                    careersByInterest,
+                    '', 
+                    3
+                ),
+            });
         }
 
         this.ask(`
@@ -113,13 +125,12 @@ app.setHandler({
 
     LinkedInListIntent() {
         if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
-            this.$alexaSkill
-                .addDirective({
-                    type: 'Alexa.Presentation.APL.RenderDocument',
-                    version: '1.0',
-                    document: require('../apl/document.json'),
-                    datasources: require('../apl/data-sources.json'),
-                });
+            this.$alexaSkill.addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument',
+                version: '1.0',
+                document: require('../apl/inner_voice_list.json'),
+                datasources: require('../apl/data-sources.json'),
+            });
         }
         this.tell(`
             According to LinkedIn, these alumni have listed Lawyer as their occupation.

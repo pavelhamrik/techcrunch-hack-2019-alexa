@@ -35,6 +35,7 @@ var Format = (function() {
     function __formatted_alumni_items(alumni, number_of_items) {
         var formatted = [];
         for (var i=0; i<number_of_items; i++) {
+            console.log(alumni[i]);
             var raw_item = JSON.parse(alumni[i]);
             var item = {
                         "listItemIdentifier": raw_item['name'],
@@ -120,7 +121,7 @@ var Format = (function() {
             var alum = data['ALMUNI_' + (i+1)];
             alumni.push(alum);
         }
-        //console.log(alumni);
+        console.log(alumni);
         var items = __formatted_alumni_items(alumni, number_of_items);
         var data_json = {
             "listTemplate1Metadata": {
