@@ -46,7 +46,44 @@ app.setHandler({
         // `);
     },
 
-    ShowMeTheCheeseIntent() {
+    async MyInterestsAreIntent() {
+        const careersByInterest = await run([this.$inputs.interestone.id]);
+        this.$user.$data.careersByInterest = careersByInterest;
+        // console.log(careersByInterest);
+
+        this.ask(`Popular EDHEC graduates' careers sorted by annual wage are:
+            ${careersByInterest[0].FUNCTION}, 
+            ${careersByInterest[1].FUNCTION}, and
+            ${careersByInterest[2].FUNCTION}. 
+            Which carrier should I tell you more about?
+        `);
+    },
+
+    CareerDetailIntent() {
+        const careersByInterest = this.$user.$data.careersByInterest;
+        // console.log(careersByInterest);
+        // const role = careersByInterest[0]
+
+        const reqRole = this.$inputs.roleDetail.value.toUpperCase();
+
+        const role = careersByInterest.find(function(roleRow) {
+            return reqRole == roleRow.FUNCTION;
+        });
+
+        console.log('ROLE', role);
+        console.log('REQ_ROLE', reqRole);
+
+        if (typeof role === 'undefined') {
+            return this.toIntent('Unhandled');    
+        }
+
+        this.ask(`
+                According to the Oxford University, ${role.FUNCTION} has ${role.AUTOMATION_RISK} probability of automation. 
+                It's not enough to just go through at the data. I have a couple of alumni from EDHEC, do you want to take a look?
+            `);
+    },
+
+    LinkedInListIntent() {
         if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
             this.$alexaSkill
                 .addDirective({
@@ -56,19 +93,11 @@ app.setHandler({
                     datasources: require('../apl/data-sources.json'),
                 });
         }
-        this.ask('Stop pestering me.', 'OK, I didn\'t mean that');
-    },
-
-    async MyInterestsAreIntent() {
-        // console.log('XXXX', this.$inputs.interestone.id);
-        const sortedByInterest = await run([this.$inputs.interestone.id]);
-        console.log(sortedByInterest);
-        this.ask('Popular EDHEC graduates’ careers sorted by annual wage are:'
-            + sortedByInterest[0].FUNCTION + ', '
-            + sortedByInterest[1].FUNCTION + ' and '
-            + sortedByInterest[2].FUNCTION + '. '
-            + 'Which carrier should I tell you more about?'
-        );
+        this.tell(`
+            According to LinkedIn, these alumni have listed Lawyer as their occupation.
+            I’ve sent you their details. Alumni are very forthcoming – do reach out!
+            Do not forget, if you choose the quick and easy path as Lord Vader did — you will become an agent of evil.
+        `);
     },
 
     Unhandled() {

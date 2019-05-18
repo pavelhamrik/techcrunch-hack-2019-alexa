@@ -2,14 +2,6 @@
 	"invocation": "inner voice",
 	"intents": [
 		{
-			"name": "ShowMeTheCheeseIntent",
-			"phrases": [
-				"cheese",
-				"say cheese",
-				"give me the cheeses"
-			]
-		},
-		{
 			"name": "MyInterestsAreIntent",
 			"phrases": [
 				"{interestone} matters to me",
@@ -26,6 +18,30 @@
 					"name": "interesttwo",
 					"type": "INTEREST_TYPE"
 				}
+			]
+		},
+		{
+			"name": "CareerDetailIntent",
+			"phrases": [
+				"tell me more about {roleDetail}",
+				"{roleDetail} please",
+				"tell me about {roleDetail}",
+				"the {roleDetail}"
+			],
+			"inputs": [
+				{
+					"name": "roleDetail",
+					"type": "ROLE_TYPE"
+				}
+			]
+		},
+		{
+			"name": "LinkedInListIntent",
+			"phrases": [
+				"yes",
+				"sure",
+				"show me",
+				"show them to me"
 			]
 		}
 	],
@@ -93,8 +109,49 @@
 					]  
 				}
 			]
+		},
+		{
+			"name": "ROLE_TYPE",
+			"values": [
+				{"id": "FINANCIAL_ANALYST", "value": "FINANCIAL ANALYST"},
+				{"id": "EXTERNAL_AUDITOR", "value": "EXTERNAL AUDITOR"},
+				{"id": "CEO", "value": "CEO"},
+				{"id": "COMMERCIAL_DIRECTOR", "value": "COMMERCIAL DIRECTOR"},
+				{"id": "CUSTOMER_DIRECTOR", "value": "CUSTOMER DIRECTOR"},
+				{"id": "MANAGEMENT_CONSULTANT", "value": "MANAGEMENT CONSULTANT"},
+				{"id": "PROJECT_DIRECTOR", "value": "PROJECT DIRECTOR"},
+				{"id": "FINANCIAL_ADVICE", "value": "FINANCIAL ADVICE"},
+				{"id": "PRODUCT_MANAGER", "value": "PRODUCT MANAGER"},
+				{"id": "MARKETING_DIRECTOR", "value": "MARKETING DIRECTOR"},
+				{"id": "BUDGET_CONTROLLER", "value": "BUDGET CONTROLLER"},
+				{"id": "TRADER", "value": "TRADER"},
+				{"id": "INVESTMENT_BANKER", "value": "INVESTMENT BANKER"},
+				{"id": "CATEGORY_MANAGER", "value": "CATEGORY MANAGER"},
+				{"id": "COMMUNICATION_DIRECTOR", "value": "COMMUNICATION DIRECTOR"},
+				{"id": "MARKETING_ADVISOR", "value": "MARKETING ADVISOR"},
+				{"id": "DIRECT_MARKETING", "value": "DIRECT MARKETING"},
+				{"id": "IT_CONSULTANCY", "value": "IT CONSULTANCY"},
+				{"id": "MERGERS_AND_ACQUISITIONS", "value": "MERGERS & ACQUISITIONS"},
+				{"id": "BRAND_MANAGER", "value": "BRAND MANAGER"},
+				{"id": "REGIONAL_DIRECTOR", "value": "REGIONAL DIRECTOR"},
+				{"id": "BUYER", "value": "BUYER"},
+				{"id": "COMMUNITY_MANAGER", "value": "COMMUNITY MANAGER"},
+				{"id": "RISK_MANAGER", "value": "RISK MANAGER"},
+				{"id": "LAWYER", "value": "LAWYER"},
+				{"id": "INSPECTION", "value": "INSPECTION"},
+				{"id": "MARKETING_STUDIES", "value": "MARKETING STUDIES"},
+				{"id": "ASSET_AND_INVESTMENT_MANAGEMENT", "value": "ASSET AND INVESTMENT MANAGEMENT"},
+				{"id": "HERITAGE_MANAGEMENT_FOR)_PRIVATE_CLIENTS", "value": "HERITAGE MANAGEMENT FOR PRIVATE CLIENTS"},
+				{"id": "DIRECTOR_OF_PRODUCTION", "value": "DIRECTOR OF PRODUCTION"},
+				{"id": "EQUITY_CAPITAL_MARKETS", "value": "EQUITY CAPITAL MARKETS"},
+				{"id": "COMMERCIAL_MARKETING_DIRECTOR", "value": "COMMERCIAL MARKETING DIRECTOR"},
+				{"id": "FINANCIAL_AND_ADMINISTRATIVE_MANAGER", "value": "FINANCIAL AND ADMINISTRATIVE MANAGER"},
+				{"id": "RECRUITMENT_ADVISORY", "value": "RECRUITMENT ADVISORY"},
+				{"id": "CUSTOMER_DIRECTOR_FOR_BIG_ACCOUNTS_DIR", "value": "CUSTOMER DIRECTOR FOR BIG ACCOUNTS DIR."},
+				{"id": "PORTFOLIO_MANAGER", "value": "PORTFOLIO MANAGER"}
+			]
 		}
-	  ],
+	],
 	"alexa": {
 		"interactionModel": {
 			"languageModel": {
