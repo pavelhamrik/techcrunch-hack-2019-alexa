@@ -1,30 +1,350 @@
 {
 	"interactionModel": {
 		"languageModel": {
-			"invocationName": "career",
-			"types": [],
-			"intents": [
+			"invocationName": "inner voice",
+			"types": [
 				{
-					"name": "HelloWorldIntent",
-					"samples": [
-						"hello",
-						"say hello",
-						"say hello world"
+					"name": "INTEREST_TYPE",
+					"values": [
+						{
+							"id": "ALUMNIS_PERCENTAGE",
+							"name": {
+								"value": "popularity among EDHEC students",
+								"synonyms": [
+									"popularity",
+									"staying in the field"
+								]
+							}
+						},
+						{
+							"id": "AUTOMATION_RISK",
+							"name": {
+								"value": "automation risk",
+								"synonyms": [
+									"risk of automation",
+									"won't be killed by robots"
+								]
+							}
+						},
+						{
+							"id": "GROWTH_BY_2024",
+							"name": {
+								"value": "projected growth",
+								"synonyms": [
+									"expected growth",
+									"growth of the industry",
+									"growthy by 2024"
+								]
+							}
+						},
+						{
+							"id": "MEDIAN_WAGE",
+							"name": {
+								"value": "annual wage",
+								"synonyms": [
+									"wage",
+									"salary",
+									"compensation"
+								]
+							}
+						},
+						{
+							"id": "PEOPLE_EMPLOYED",
+							"name": {
+								"value": "people employed",
+								"synonyms": [
+									"employment rate",
+									"rate of employment"
+								]
+							}
+						},
+						{
+							"id": "FUN",
+							"name": {
+								"value": "fun",
+								"synonyms": [
+									"having fun",
+									"enjoyment"
+								]
+							}
+						},
+						{
+							"id": "TEAM_WORK",
+							"name": {
+								"value": "team work",
+								"synonyms": [
+									"being a part of a team",
+									"being part of team",
+									"team"
+								]
+							}
+						}
 					]
 				},
 				{
-					"name": "MyNameIsIntent",
+					"name": "ROLE_TYPE",
+					"values": [
+						{
+							"id": "FINANCIAL_ANALYST",
+							"name": {
+								"value": "FINANCIAL ANALYST"
+							}
+						},
+						{
+							"id": "EXTERNAL_AUDITOR",
+							"name": {
+								"value": "EXTERNAL AUDITOR"
+							}
+						},
+						{
+							"id": "CEO",
+							"name": {
+								"value": "CEO"
+							}
+						},
+						{
+							"id": "COMMERCIAL_DIRECTOR",
+							"name": {
+								"value": "COMMERCIAL DIRECTOR"
+							}
+						},
+						{
+							"id": "CUSTOMER_DIRECTOR",
+							"name": {
+								"value": "CUSTOMER DIRECTOR"
+							}
+						},
+						{
+							"id": "MANAGEMENT_CONSULTANT",
+							"name": {
+								"value": "MANAGEMENT CONSULTANT"
+							}
+						},
+						{
+							"id": "PROJECT_DIRECTOR",
+							"name": {
+								"value": "PROJECT DIRECTOR"
+							}
+						},
+						{
+							"id": "FINANCIAL_ADVICE",
+							"name": {
+								"value": "FINANCIAL ADVICE"
+							}
+						},
+						{
+							"id": "PRODUCT_MANAGER",
+							"name": {
+								"value": "PRODUCT MANAGER"
+							}
+						},
+						{
+							"id": "MARKETING_DIRECTOR",
+							"name": {
+								"value": "MARKETING DIRECTOR"
+							}
+						},
+						{
+							"id": "BUDGET_CONTROLLER",
+							"name": {
+								"value": "BUDGET CONTROLLER"
+							}
+						},
+						{
+							"id": "TRADER",
+							"name": {
+								"value": "TRADER"
+							}
+						},
+						{
+							"id": "INVESTMENT_BANKER",
+							"name": {
+								"value": "INVESTMENT BANKER"
+							}
+						},
+						{
+							"id": "CATEGORY_MANAGER",
+							"name": {
+								"value": "CATEGORY MANAGER"
+							}
+						},
+						{
+							"id": "COMMUNICATION_DIRECTOR",
+							"name": {
+								"value": "COMMUNICATION DIRECTOR"
+							}
+						},
+						{
+							"id": "MARKETING_ADVISOR",
+							"name": {
+								"value": "MARKETING ADVISOR"
+							}
+						},
+						{
+							"id": "DIRECT_MARKETING",
+							"name": {
+								"value": "DIRECT MARKETING"
+							}
+						},
+						{
+							"id": "IT_CONSULTANCY",
+							"name": {
+								"value": "IT CONSULTANCY"
+							}
+						},
+						{
+							"id": "MERGERS_AND_ACQUISITIONS",
+							"name": {
+								"value": "MERGERS & ACQUISITIONS"
+							}
+						},
+						{
+							"id": "BRAND_MANAGER",
+							"name": {
+								"value": "BRAND MANAGER"
+							}
+						},
+						{
+							"id": "REGIONAL_DIRECTOR",
+							"name": {
+								"value": "REGIONAL DIRECTOR"
+							}
+						},
+						{
+							"id": "BUYER",
+							"name": {
+								"value": "BUYER"
+							}
+						},
+						{
+							"id": "COMMUNITY_MANAGER",
+							"name": {
+								"value": "COMMUNITY MANAGER"
+							}
+						},
+						{
+							"id": "RISK_MANAGER",
+							"name": {
+								"value": "RISK MANAGER"
+							}
+						},
+						{
+							"id": "LAWYER",
+							"name": {
+								"value": "LAWYER"
+							}
+						},
+						{
+							"id": "INSPECTION",
+							"name": {
+								"value": "INSPECTION"
+							}
+						},
+						{
+							"id": "MARKETING_STUDIES",
+							"name": {
+								"value": "MARKETING STUDIES"
+							}
+						},
+						{
+							"id": "ASSET_AND_INVESTMENT_MANAGEMENT",
+							"name": {
+								"value": "ASSET AND INVESTMENT MANAGEMENT"
+							}
+						},
+						{
+							"id": "HERITAGE_MANAGEMENT_FOR)_PRIVATE_CLIENTS",
+							"name": {
+								"value": "HERITAGE MANAGEMENT FOR PRIVATE CLIENTS"
+							}
+						},
+						{
+							"id": "DIRECTOR_OF_PRODUCTION",
+							"name": {
+								"value": "DIRECTOR OF PRODUCTION"
+							}
+						},
+						{
+							"id": "EQUITY_CAPITAL_MARKETS",
+							"name": {
+								"value": "EQUITY CAPITAL MARKETS"
+							}
+						},
+						{
+							"id": "COMMERCIAL_MARKETING_DIRECTOR",
+							"name": {
+								"value": "COMMERCIAL MARKETING DIRECTOR"
+							}
+						},
+						{
+							"id": "FINANCIAL_AND_ADMINISTRATIVE_MANAGER",
+							"name": {
+								"value": "FINANCIAL AND ADMINISTRATIVE MANAGER"
+							}
+						},
+						{
+							"id": "RECRUITMENT_ADVISORY",
+							"name": {
+								"value": "RECRUITMENT ADVISORY"
+							}
+						},
+						{
+							"id": "CUSTOMER_DIRECTOR_FOR_BIG_ACCOUNTS_DIR",
+							"name": {
+								"value": "CUSTOMER DIRECTOR FOR BIG ACCOUNTS DIR."
+							}
+						},
+						{
+							"id": "PORTFOLIO_MANAGER",
+							"name": {
+								"value": "PORTFOLIO MANAGER"
+							}
+						}
+					]
+				}
+			],
+			"intents": [
+				{
+					"name": "MyInterestsAreIntent",
 					"samples": [
-						"{name}",
-						"my name is {name}",
-						"i am {name}",
-						"you can call me {name}"
+						"{interestone} matters to me",
+						"{interestone} matters the most",
+						"It's totally {interestone}",
+						"{interestone} i guess"
 					],
 					"slots": [
 						{
-							"name": "name",
-							"type": "AMAZON.US_FIRST_NAME"
+							"name": "interestone",
+							"type": "INTEREST_TYPE"
+						},
+						{
+							"name": "interesttwo",
+							"type": "INTEREST_TYPE"
 						}
+					]
+				},
+				{
+					"name": "CareerDetailIntent",
+					"samples": [
+						"tell me more about {roleDetail}",
+						"{roleDetail} please",
+						"tell me about {roleDetail}",
+						"the {roleDetail}"
+					],
+					"slots": [
+						{
+							"name": "roleDetail",
+							"type": "ROLE_TYPE"
+						}
+					]
+				},
+				{
+					"name": "LinkedInListIntent",
+					"samples": [
+						"yes",
+						"sure",
+						"show me",
+						"show them to me"
 					]
 				},
 				{
@@ -37,6 +357,10 @@
 				},
 				{
 					"name": "AMAZON.StopIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.NavigateHomeIntent",
 					"samples": []
 				}
 			]

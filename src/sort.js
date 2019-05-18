@@ -44,7 +44,7 @@ var Sort = (function() {
         var stats = {};
         data.forEach(function(row) {
             __sortable_columns.forEach(function(column) {
-                //console.log(column);
+                // console.log(column);
                 var value = row[column];
                 value = __get_number(value);
                 if (!(column in stats)) {
