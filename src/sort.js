@@ -3,7 +3,7 @@ var Sort = (function() {
     'use strict';
 
     var __data = [];
-    const __sortable_columns = ['ALUMNIS %', 'AUTOMATION RISK', 'GROWTH BY 2024', 'MEDIAN WAGE', 'PEOPLE EMPLOYED', 'FUN', 'TEAM WORK'];
+    const __sortable_columns = ['ALUMNIS_PERCENTAGE', 'AUTOMATION_RISK', 'GROWTH_BY_2024', 'MEDIAN_WAGE', 'PEOPLE_EMPLOYED', 'FUN', 'TEAM_WORK'];
 
     function __load_data(filename) {
         var fs = require('fs');
@@ -66,7 +66,7 @@ var Sort = (function() {
         var min = __stats[column]['min'];
         var max = __stats[column]['max'];
         var sign = 1;
-        if (column == "AUTOMATION RISK") {
+        if (column == "AUTOMATION_RISK") {
             sign = -1;
         }
         var normalized_value = sign*(value - min)/(max-min);
@@ -107,10 +107,10 @@ async function run() {
     Sort.init();
     await sleep(1000);
 
-    //var criteria = ['ALUMNIS %', 'AUTOMATION RISK', 'GROWTH BY 2024'];
-    //var criteria = ['GROWTH BY 2024'];
-    var criteria = ['ALUMNIS %'];
-    //var criteria = ['MEDIAN WAGE'];
+    var criteria = ['ALUMNIS_PERCENTAGE', 'AUTOMATION_RISK', 'GROWTH_BY_2024'];
+    //var criteria = ['GROWTH_BY_2024'];
+    //var criteria = ['ALUMNIS_PERCENTAGE'];
+    //var criteria = ['MEDIAN_WAGE'];
     sorted_data = Sort.sort_by(criteria);
 
     console.log("Sorted data [0] :");
