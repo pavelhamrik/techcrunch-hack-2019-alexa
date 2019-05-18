@@ -33,7 +33,7 @@ app.setHandler({
                 .addDirective({
                     type: 'Alexa.Presentation.APL.RenderDocument',
                     version: '1.0',
-                    document: require('../apl/splash.json'),
+                    document: require('../apl/intro.json'),
                     datasources: {},
                 });
         }
@@ -62,11 +62,11 @@ app.setHandler({
                 type: 'Alexa.Presentation.APL.RenderDocument',
                 version: '1.0',
                 document: require('../apl/inner_voice_list.json'),
-                datasources: JSON.stringify(format_for_display(
+                datasources: format_for_display(
                     [this.$inputs.interestone.id], 
                     careersByInterest,
                     3
-                )),
+                ),
                 // datasources: require('../apl/data-sources.json')
             });
         }
@@ -93,6 +93,16 @@ app.setHandler({
 
         if (typeof role === 'undefined') {
             return this.toIntent('Unhandled');    
+        }
+
+        if (this.$request.context.System.device.supportedInterfaces['Alexa.Presentation.APL']) {
+            this.$alexaSkill
+                .addDirective({
+                    type: 'Alexa.Presentation.APL.RenderDocument',
+                    version: '1.0',
+                    document: require('../apl/job-template.json'),
+                    datasources: {},
+                });
         }
 
         this.ask(`
