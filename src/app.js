@@ -16,7 +16,6 @@ const app = new App();
 
 app.use(
     new Alexa(),
-    // new GoogleAssistant(),
     new JovoDebugger(),
     new FileDb()
 );
@@ -60,31 +59,31 @@ app.setHandler({
         this.ask('Stop pestering me.', 'OK, I didn\'t mean that');
     },
 
-    MyInterestsAreIntent() {
+    async MyInterestsAreIntent() {
         // console.log('XXXX', this.$inputs.interestone.id);
-        const sortedByInterest = run(this.$inputs.interestone.id);
+        const sortedByInterest = await run([this.$inputs.interestone.id]);
         console.log(sortedByInterest);
         this.ask('Popular EDHEC graduates’ careers sorted by annual wage are:'
-            + sortedByInterest[0][1] + ', '
-            + sortedByInterest[1][1] + ' and '
-            + sortedByInterest[2][1] + '. '
+            + sortedByInterest[0].FUNCTION + ', '
+            + sortedByInterest[1].FUNCTION + ' and '
+            + sortedByInterest[2].FUNCTION + '. '
+            + 'Which carrier should I tell you more about?'
         );
     },
 
     Unhandled() {
-        this.ask('I\'m sorry, I don\'t believe I understand.');
+        this.ask('Sorry, I don\'t think I understand.');
     },
 
     ON_ERROR() {
         console.log(`Error: ${JSON.stringify(this.$alexaSkill.getError())}`);
         console.log(`Request: ${JSON.stringify(this.$alexaSkill.$request)}`);
     
-        this.ask('There was an error. Can I help you in any other way?');
+        this.ask('Uh oh, an error. What now, huh?');
     },
 
     END() {
-        const reason = this.$alexaSkill.getEndReason();
-        console.log(reason);
+        console.log(`Termination: ${this.$alexaSkill.getEndReason()}`);
 
         this.tell('Ta ta!');
     }

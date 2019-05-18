@@ -101,13 +101,13 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function run(criteria = 'TEAM_WORK') {
+async function run(criteria = ['TEAM_WORK']) {
     Sort.init();
     await sleep(1000);
 
     sorted_data = Sort.sort_by(criteria);
 
-    console.log("Sorted data [0] :", sorted_data[0]);
+    // console.log("Sorted data [0] :", sorted_data[0]);
     
     return sorted_data;
 }
