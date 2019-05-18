@@ -12,7 +12,7 @@ var Sort = (function() {
 
             var headers = [];
 
-            var ordinalNumber = 0;
+            var id = 0;
 
             fs.createReadStream(filename)
                 .pipe(csv())
@@ -24,8 +24,8 @@ var Sort = (function() {
                         for (var i=0; i<headers.length; i++) {
                             row[headers[i]] = item[i];
                         }
-                        ordinalNumber += 1;
-                        row['ordinalNumber'] = ordinalNumber;
+                        id += 1;
+                        row['id'] = id;
                         __data.push(row);
                     }
                 })
@@ -101,22 +101,21 @@ var Sort = (function() {
 }());
 
 
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function run() {
+async function sort_by(criteria = ['GROWTH_BY_2024']) {
     await Sort.init();
 
-    var criteria = ['ALUMNIS_PERCENTAGE', 'AUTOMATION_RISK', 'GROWTH_BY_2024'];
+    //var criteria = ['ALUMNIS_PERCENTAGE', 'AUTOMATION_RISK', 'GROWTH_BY_2024'];
     //var criteria = ['GROWTH_BY_2024'];
     //var criteria = ['ALUMNIS_PERCENTAGE'];
     //var criteria = ['MEDIAN_WAGE'];
     sorted_data = Sort.sort_by(criteria);
 
-    console.log("Sorted data [0] :");
-    console.log(sorted_data[0]);
+    //console.log("Sorted data [0] :");
+    //console.log(sorted_data[0]);
+    //formatted = format_for_display(criteria, sorted_data, 5);
+    //console.log(formatted);
+
+    return sorted_data;
 }
 
-run();
+module.exports = sort_by;
