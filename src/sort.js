@@ -5,32 +5,35 @@ var Sort = (function() {
     var __data = [];
     const __sortable_columns = ['ALUMNIS_PERCENTAGE', 'AUTOMATION_RISK', 'GROWTH_BY_2024', 'MEDIAN_WAGE', 'PEOPLE_EMPLOYED', 'FUN', 'TEAM_WORK'];
 
-    function __load_data(filename) {
-        var fs = require('fs');
-        var csv = require('fast-csv');
+    async function __load_data(filename) {
+        return new Promise(function(resolve, reject) {
+            var fs = require('fs');
+            var csv = require('fast-csv');
 
-        var headers = [];
+            var headers = [];
 
-        var ordinalNumber = 0;
+            var ordinalNumber = 0;
 
-        fs.createReadStream(filename)
-            .pipe(csv())
-            .on('data', function(item) {
-                if (headers.length === 0) {
-                    headers = item;
-                } else {
-                    var row = {};
-                    for (var i=0; i<headers.length; i++) {
-                        row[headers[i]] = item[i];
+            fs.createReadStream(filename)
+                .pipe(csv())
+                .on('data', function(item) {
+                    if (headers.length === 0) {
+                        headers = item;
+                    } else {
+                        var row = {};
+                        for (var i=0; i<headers.length; i++) {
+                            row[headers[i]] = item[i];
+                        }
+                        ordinalNumber += 1;
+                        row['ordinalNumber'] = ordinalNumber;
+                        __data.push(row);
                     }
-                    ordinalNumber += 1;
-                    row['ordinalNumber'] = ordinalNumber;
-                    __data.push(row);
-                }
-            })
-            .on('end', function(_nil) {
-                __stats = __update_stats(__data);
-            })
+                })
+                .on('end', function(_nil) {
+                    __stats = __update_stats(__data);
+                    resolve();
+                });
+        });
     }
 
     function __get_number(value) {
@@ -66,7 +69,7 @@ var Sort = (function() {
         var min = __stats[column]['min'];
         var max = __stats[column]['max'];
         var sign = 1;
-        if (column == "AUTOMATION RISK") {
+        if (column == "AUTOMATION_RISK") {
             sign = -1;
         }
         var normalized_value = sign*(value - min)/(max-min);
@@ -84,8 +87,8 @@ var Sort = (function() {
     }
 
     return {
-        init: function() {
-            __load_data('../data.csv', );
+        init: async function() {
+            await __load_data('../data.csv', );
         },
         sort_by: function(criteria) {
             return __data.slice().sort(function(a, b) {
@@ -101,10 +104,13 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function run(criteria = ['TEAM_WORK']) {
-    Sort.init();
-    await sleep(1000);
+async function run() {
+    await Sort.init();
 
+    var criteria = ['ALUMNIS_PERCENTAGE', 'AUTOMATION_RISK', 'GROWTH_BY_2024'];
+    //var criteria = ['GROWTH_BY_2024'];
+    //var criteria = ['ALUMNIS_PERCENTAGE'];
+    //var criteria = ['MEDIAN_WAGE'];
     sorted_data = Sort.sort_by(criteria);
 
     // console.log("Sorted data [0] :", sorted_data[0]);
